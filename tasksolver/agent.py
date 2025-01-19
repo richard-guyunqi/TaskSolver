@@ -7,6 +7,11 @@ from .gpt4v import *
 from .ollama import *
 from .claude import *
 from .gemini import *
+from .qwen import *
+from .phi import *
+from .llama import *
+from .minicpm import *
+from .intern import *
 from abc import abstractmethod
 from typing import Union, Dict
 from bson import ObjectId
@@ -32,7 +37,7 @@ class Agent(object):
         self.vision_model = vision_model
         self.task = task
         
-        if vision_model in ('gpt-4-vision-preview', 'gpt-4', 'gpt-4-turbo', 'gpt-4o-mini',  "o1-preview", "o1-mini"):
+        if vision_model in ('gpt-4-vision-preview', 'gpt-4', 'gpt-4-turbo', 'gpt-4o-mini', "gpt-4o", "o1-preview", "o1-mini"):
             # using the open ai key.
             logger.info(f"creating GPT-based agent of type: {vision_model}")
             if isinstance(api_key, KeyChain):
@@ -52,6 +57,21 @@ class Agent(object):
             logger.info(f"api:{api_key}, task:{type(task)}, model:{vision_model}")
             
             self.visual_interface = GeminiModel(api_key=api_key, task=task, model=vision_model)
+        elif vision_model == 'Qwen/Qwen2-VL-7B-Instruct-AWQ':
+            logger.info(f"creating qwen-based agent of type: {vision_model}")
+            self.visual_interface = QwenModel(task=task, model=vision_model)
+        elif vision_model == 'microsoft/Phi-3.5-vision-instruct':
+            logger.info(f"creating Phi-based agent of type: {vision_model}")
+            self.visual_interface = PhiModel(task=task, model=vision_model)
+        elif vision_model == 'meta-llama/Meta-Llama-3.1-8B-Instruct':
+            logger.info(f"creating LLaMA-based agent of type: {vision_model}")
+            self.visual_interface = LlamaModel(task=task, model=vision_model)
+        elif vision_model == 'openbmb/MiniCPM-V-2_6-int4':
+            logger.info(f"creating MiniCPM-based agent of type: {vision_model}")
+            self.visual_interface = MiniCPMModel(task=task, model=vision_model)
+        elif vision_model == 'OpenGVLab/InternVL2-8B':
+            logger.info(f"creating Intern-based agent of type: {vision_model}")
+            self.visual_interface = InternModel(task=task, model=vision_model)
         else:
             logger.info(f"creating Ollama-based agent of type: {vision_model}")
             self.visual_interface = OllamaModel(task, vision_model)

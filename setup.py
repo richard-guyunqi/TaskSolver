@@ -15,6 +15,17 @@ setup(
         "flask_cors",
         "ollama",
         "anthropic",
-        "google-generativeai"
+        "google-generativeai",
+        "transformers",
+        "tqdm",
+        "shortuuid",
+        "qwen_vl_utils",
+        "decord",
+        "sentencepiece",
+        "timm",
+        "einops",
+        "accelerate",
+        "bitsandbytes",
+        "flash_attn"
     ]
 )

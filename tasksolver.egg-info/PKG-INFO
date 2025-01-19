@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: tasksolver
+Version: 0.0.1
+Requires-Dist: loguru
+Requires-Dist: pillow
+Requires-Dist: bson
+Requires-Dist: requests
+Requires-Dist: openai
+Requires-Dist: streamlit
+Requires-Dist: flask
+Requires-Dist: flask_cors
+Requires-Dist: ollama
+Requires-Dist: anthropic
+Requires-Dist: google-generativeai
