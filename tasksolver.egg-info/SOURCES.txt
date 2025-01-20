@@ -9,8 +9,13 @@ tasksolver/event.py
 tasksolver/exceptions.py
 tasksolver/gemini.py
 tasksolver/gpt4v.py
+tasksolver/intern.py
 tasksolver/keychain.py
+tasksolver/llama.py
+tasksolver/minicpm.py
 tasksolver/ollama.py
+tasksolver/phi.py
+tasksolver/qwen.py
 tasksolver/utils.py
 tasksolver.egg-info/PKG-INFO
 tasksolver.egg-info/SOURCES.txt

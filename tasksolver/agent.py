@@ -49,13 +49,10 @@ class Agent(object):
             if isinstance(api_key, KeyChain):
                 api_key = api_key["claude"]
             self.visual_interface = ClaudeModel(api_key, task)
-        elif vision_model in ('gemini-pro' , 'gemini-pro-vision'):
+        elif vision_model in ('gemini-pro', 'gemini-pro-vision', 'gemini-2.0-flash-exp', 'gemini-1.5-flash', 'gemini-1.5-pro'):
             # using the gemini key.
             logger.info(f"creating Gemini-based agent of type: {vision_model}")
-            
-            # DEBUG
             logger.info(f"api:{api_key}, task:{type(task)}, model:{vision_model}")
-            
             self.visual_interface = GeminiModel(api_key=api_key, task=task, model=vision_model)
         elif vision_model == 'Qwen/Qwen2-VL-7B-Instruct-AWQ':
             logger.info(f"creating qwen-based agent of type: {vision_model}")
@@ -72,6 +69,12 @@ class Agent(object):
         elif vision_model == 'OpenGVLab/InternVL2-8B':
             logger.info(f"creating Intern-based agent of type: {vision_model}")
             self.visual_interface = InternModel(task=task, model=vision_model)
+
+        # # TODO: Add your own model here
+        # elif vision_model == "{Name of your model}":
+        #     logger.info(f"creating {Name of your model}-based agent of type: {vision_model}")
+        #     self.visual_interface = YourModel(task=task, model=vision_model)
+            
         else:
             logger.info(f"creating Ollama-based agent of type: {vision_model}")
             self.visual_interface = OllamaModel(task, vision_model)

@@ -9,7 +9,7 @@ from .exceptions import GPTOutputParseException, GPTMaxTriesExceededException
 class GPTModel(object):
     def __init__(self, api_key:str,
                  task:TaskSpec, 
-                 model:str="gpt-4-vision-preview",
+                 model:str="gpt-4o",
                  ):
         self.open_ai_key:str = api_key
         
@@ -21,7 +21,6 @@ class GPTModel(object):
         args:
             payload: json dictionary, prepared by `prepare_payload`
         """
-
         client = OpenAI(api_key=self.open_ai_key) 
 
         try:
