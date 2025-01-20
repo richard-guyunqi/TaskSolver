@@ -26,6 +26,10 @@ setup(
         "einops",
         "accelerate",
         "bitsandbytes",
-        "flash_attn"
+        "flash_attn",
+        "matplotlib",
+        "torch",
+        "torchvision",
+        "torchaudio" 
     ]
 )
